@@ -167,31 +167,57 @@ from datetime import time
 from datetime import datetime
 
 
+# def main():
+#     # Get today's date from the simple today() method from date class
+#     today = date.today()
+#     print "Today's date is", today
+#
+#     # print out date's individual components
+#     print "Date components: ", today.day, today.month, today.year
+#
+#     # todays weekday 0=mon -> 6=sun
+#     print "Today's weekday: ", today.weekday()
+#
+#     # Date time objects
+#     today = datetime.now()
+#     print "The current date and time is: ", today
+#
+#     t = datetime.time(datetime.now())
+#     print "Today's date time: ", t
+#
+#     wd = date.weekday(today)
+#
+#     days = ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"]
+#
+#     print "today is day number: %d" % wd
+#     print "Which is a " + days[wd]
+# if __name__ == "__main__":
+#     main();
+#
+#
+#
+
+
+from datetime import datetime
+
 def main():
-    # Get today's date from the simple today() method from date class
-    today = date.today()
-    print "Today's date is", today
+    now = datetime.now()
 
-    # print out date's individual components
-    print "Date components: ", today.day, today.month, today.year
+    # Date formatting #
+    # %y/%Y = Year, %a/%A = Weekday, %b/%B = month, %d - day of month
 
-    # todays weekday 0=mon -> 6=sun
-    print "Today's weekday: ", today.weekday()
+    print now.strftime("%Y") #full year with century
+    print now.strftime("%a, %d, %B, %Y")
 
-    # Date time objects
-    today = datetime.now()
-    print "The current date and time is: ", today
+    # Locale
+    # %c - locales date and time, %x - locales date, %X locales time
 
-    t = datetime.time(datetime.now())
-    print "Today's date time: ", t
+    print now.strftime("%c") # locale date and time
+    print now.strftime("%x") # lcoale date
+    print now.strftime("%X") # locale time
 
-    wd = date.weekday(today)
 
-    days = ["monday", "tuesday", "wednesday", "thursday", "friday"]
 
-    print "today is: ",
-if __name__ == "__main__":
-    main();
-    
-    
-    
+
+if __name__ == '__main__':
+    main()
