@@ -217,6 +217,12 @@ def main():
     print now.strftime("%X") # locale time
 
 
+    ### Time formatting ###
+
+    # %I/%H - 12/25hr, %M - minute, %S - second, %p - locales AM/PM
+
+    print now.strftime("%I:%M:%S %p") # 12-hour-Hour-Minute-second-:AM/PM
+    print now.strftime("%H:%M:%S")
 
 
 if __name__ == '__main__':
