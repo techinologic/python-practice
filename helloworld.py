@@ -161,12 +161,6 @@
 #
 
 # Dates, time, and datetime classes
-
-from datetime import date
-from datetime import time
-from datetime import datetime
-
-
 # def main():
 #     # Get today's date from the simple today() method from date class
 #     today = date.today()
@@ -197,33 +191,38 @@ from datetime import datetime
 #
 #
 
-
+from datetime import date
+from datetime import time
 from datetime import datetime
-
-def main():
-    now = datetime.now()
-
-    # Date formatting #
-    # %y/%Y = Year, %a/%A = Weekday, %b/%B = month, %d - day of month
-
-    print now.strftime("%Y") #full year with century
-    print now.strftime("%a, %d, %B, %Y")
-
-    # Locale
-    # %c - locales date and time, %x - locales date, %X locales time
-
-    print now.strftime("%c") # locale date and time
-    print now.strftime("%x") # lcoale date
-    print now.strftime("%X") # locale time
+from datetime import timedelta
 
 
-    ### Time formatting ###
+# construct a basic timedelta and print it
+print timedelta(days=365, hours=5, minutes=1)
 
-    # %I/%H - 12/25hr, %M - minute, %S - second, %p - locales AM/PM
+# print today's date
+print "Today's date is: " + str(datetime.now())
 
-    print now.strftime("%I:%M:%S %p") # 12-hour-Hour-Minute-second-:AM/PM
-    print now.strftime("%H:%M:%S")
+# print date one year from now
+print "one year from now it will be: " + str(datetime.now() + timedelta(days=365))
+
+print "in two weeks and 3 days, it will be: " + str(datetime.now() + timedelta(weeks=2, days=3))
+
+t = datetime.now() - timedelta(weeks=1)
+s = t.strftime("%A %B %d, %Y")
+
+print "1 week ago, it was: " + s
 
 
-if __name__ == '__main__':
-    main()
+## calculate how many days until April Fool's day ##
+
+# get today's date
+today = datetime.now()
+afd = date(today.year, 4, 1)
+
+if afd < today:
+    print "April fools day already went by by %d days ago" % ((today-afd).days)
+    afd = afd.replace(year=today.year + 1)
+
+time_to_afd = abs(afd-today)
+print time_to_afd.days, "days until next april fools day!"
