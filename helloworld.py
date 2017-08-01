@@ -268,7 +268,7 @@
 ############# READING AND WRITING FILES ###################
 
 # create a file and write something inside it
-def main():
+# def main():
 # WRITE ACCESS
     # f = open("textfile.txt","w+") # write access/ will overwrite if done again
     #
@@ -296,15 +296,55 @@ def main():
 
 # READLINES FUNCTINO WILL READ EACH LINE INTO A LIST and print EACH LINE
 
-    f = open("textfile.txt","r") # append / will append to previously written data in file
+#     f = open("textfile.txt","r") # append / will append to previously written data in file
+#
+#     if f.mode == 'r':
+#         fl = f.readlines()
+#     for x in fl:
+#         print x
+#
+#
+#
+#
+# if __name__ == '__main__':
+#     main()
 
-    if f.mode == 'r':
-        fl = f.readlines()
-    for x in fl:
-        print x
+################ PATH UTILITIES ##################
+
+# print what kind of OS
+import os
+from os import path
+import datetime
+from datetime import date, time, timedelta
+import time
 
 
+def main():
+    print "The OS name is: " + os.name
 
+# check for item existence and type
+
+    print "Item exist: " + str(path.exists("textfile.txt"))
+    print "Item is a file: " + str(path.isfile("textfile.txt"))
+    print "Item's path and name: " + str(path.isdir("textfile.txt"))
+
+# WORK with file paths
+
+    print "Item's path: " + str(path.realpath("textfile.txt")) # print file path /actual full path
+    print "Item's path and name: " \
+          + str(path.split(path.realpath("textfile.txt"))) #splits path and name
+
+# GET MOdification time of a file
+
+    t = time.ctime(path.getmtime("textfile.txt")) #print the time when file was last modified/ ctime format
+    print "File was last modified on " + t
+    print datetime.datetime.fromtimestamp(path.getmtime("textfile.txt")) #datetime format
+
+#calculate how long ago a file was modified
+
+    td = datetime.datetime.now() - datetime.datetime.fromtimestamp(path.getmtime("textfile.txt"))
+    print "It has been " + str(td) + " since the file was modified"
+    print "Or, " + str(td.total_seconds()) + " seconds"
 
 if __name__ == '__main__':
     main()
