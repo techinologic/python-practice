@@ -252,6 +252,7 @@ for name in calendar.month_name:
 for day in calendar.day_name:
     print day
 
+# display the date of every friday every month
 for m in range(1, 13): # represents months
     cal = calendar.monthcalendar(2017, m)
     weekone = cal[0]
@@ -261,3 +262,4 @@ for m in range(1, 13): # represents months
         meetday = weekone[calendar.FRIDAY]
     else:
         meetday = weektwo[calendar.FRIDAY]
+    print "%10s %2d" % (calendar.month_name[m], meetday)
