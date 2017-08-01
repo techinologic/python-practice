@@ -229,37 +229,46 @@
 
 ###### WORKING WITH CALENDAR #######
 
-import calendar
+# import calendar
+#
+# # create plain text calendar
+# c = calendar.TextCalendar(calendar.MONDAY)
+# str = c.formatmonth(2017, 8, 0, 0)
+# print str
+#
+# hc = calendar.HTMLCalendar(calendar.MONDAY)
+# str = hc.formatmonth(2017, 1)
+# print str
+#
+# # print each day of the calendar
+# for i in c.itermonthdays(2017, 8):
+#     print i
+#
+# # locales
+#
+# for name in calendar.month_name:
+#     print name
+#
+# for day in calendar.day_name:
+#     print day
+#
+# # display the date of every friday every month
+# for m in range(1, 13): # represents months
+#     cal = calendar.monthcalendar(2017, m)
+#     weekone = cal[0]
+#     weektwo = cal[1]
+#
+#     if weekone[calendar.FRIDAY] != 0:
+#         meetday = weekone[calendar.FRIDAY]
+#     else:
+#         meetday = weektwo[calendar.FRIDAY]
+#     print "%10s %2d" % (calendar.month_name[m], meetday)
 
-# create plain text calendar
-c = calendar.TextCalendar(calendar.MONDAY)
-str = c.formatmonth(2017, 8, 0, 0)
-print str
 
-hc = calendar.HTMLCalendar(calendar.MONDAY)
-str = hc.formatmonth(2017, 1)
-print str
+############# READDING AND WRITING FILES ###################
 
-# print each day of the calendar
-for i in c.itermonthdays(2017, 8):
-    print i
+def main():
+    f = open("textfile.txt","w+")
 
-# locales
-
-for name in calendar.month_name:
-    print name
-
-for day in calendar.day_name:
-    print day
-
-# display the date of every friday every month
-for m in range(1, 13): # represents months
-    cal = calendar.monthcalendar(2017, m)
-    weekone = cal[0]
-    weektwo = cal[1]
-
-    if weekone[calendar.FRIDAY] != 0:
-        meetday = weekone[calendar.FRIDAY]
-    else:
-        meetday = weektwo[calendar.FRIDAY]
-    print "%10s %2d" % (calendar.month_name[m], meetday)
+if __name__ == '__main__':
+    main()
