@@ -265,10 +265,46 @@
 #     print "%10s %2d" % (calendar.month_name[m], meetday)
 
 
-############# READDING AND WRITING FILES ###################
+############# READING AND WRITING FILES ###################
 
+# create a file and write something inside it
 def main():
-    f = open("textfile.txt","w+")
+# WRITE ACCESS
+    # f = open("textfile.txt","w+") # write access/ will overwrite if done again
+    #
+    # for i in range(10):
+    #     f.write("This is line %d\r\n" % (i+1))
+    #
+    # f.close()
+
+# APPEND ACCESS
+    # f = open("textfile.txt","a+") # append / will append to previously written data in file
+    #
+    # for i in range(10):
+    #     f.write("This is line %d\r\n" % (i+1))
+    #
+    # f.close()
+
+# READ ACCESS / OPEN FILE INTO CONSOLE
+
+    # f = open("textfile.txt","r") # append / will append to previously written data in file
+    #
+    # if f.mode == 'r':
+    #     contents = f.read()
+    # print contents
+    # f.close()
+
+# READLINES FUNCTINO WILL READ EACH LINE INTO A LIST and print EACH LINE
+
+    f = open("textfile.txt","r") # append / will append to previously written data in file
+
+    if f.mode == 'r':
+        fl = f.readlines()
+    for x in fl:
+        print x
+
+
+
 
 if __name__ == '__main__':
     main()
