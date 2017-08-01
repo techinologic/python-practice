@@ -191,38 +191,73 @@
 #
 #
 
-from datetime import date
-from datetime import time
-from datetime import datetime
-from datetime import timedelta
+# from datetime import date
+# from datetime import time
+# from datetime import datetime
+# from datetime import timedelta
+#
+#
+# # construct a basic timedelta and print it
+# print timedelta(days=365, hours=5, minutes=1)
+#
+# # print today's date
+# print "Today's date is: " + str(datetime.now())
+#
+# # print date one year from now
+# print "one year from now it will be: " + str(datetime.now() + timedelta(days=365))
+#
+# print "in two weeks and 3 days, it will be: " + str(datetime.now() + timedelta(weeks=2, days=3))
+#
+# t = datetime.now() - timedelta(weeks=1)
+# s = t.strftime("%A %B %d, %Y")
+#
+# print "1 week ago, it was: " + s
+#
+#
+# ## calculate how many days until April Fool's day ##
+#
+# # get today's date
+# today = datetime.now()
+# afd = date(today.year, 4, 1)
+#
+# if afd < today:
+#     print "April fools day already went by by %d days ago" % ((today-afd).days)
+#     afd = afd.replace(year=today.year + 1)
+#
+# time_to_afd = abs(afd-today)
+# print time_to_afd.days, "days until next april fools day!"
 
+###### WORKING WITH CALENDAR #######
 
-# construct a basic timedelta and print it
-print timedelta(days=365, hours=5, minutes=1)
+import calendar
 
-# print today's date
-print "Today's date is: " + str(datetime.now())
+# create plain text calendar
+c = calendar.TextCalendar(calendar.MONDAY)
+str = c.formatmonth(2017, 8, 0, 0)
+print str
 
-# print date one year from now
-print "one year from now it will be: " + str(datetime.now() + timedelta(days=365))
+hc = calendar.HTMLCalendar(calendar.MONDAY)
+str = hc.formatmonth(2017, 1)
+print str
 
-print "in two weeks and 3 days, it will be: " + str(datetime.now() + timedelta(weeks=2, days=3))
+# print each day of the calendar
+for i in c.itermonthdays(2017, 8):
+    print i
 
-t = datetime.now() - timedelta(weeks=1)
-s = t.strftime("%A %B %d, %Y")
+# locales
 
-print "1 week ago, it was: " + s
+for name in calendar.month_name:
+    print name
 
+for day in calendar.day_name:
+    print day
 
-## calculate how many days until April Fool's day ##
+for m in range(1, 13): # represents months
+    cal = calendar.monthcalendar(2017, m)
+    weekone = cal[0]
+    weektwo = cal[1]
 
-# get today's date
-today = datetime.now()
-afd = date(today.year, 4, 1)
-
-if afd < today:
-    print "April fools day already went by by %d days ago" % ((today-afd).days)
-    afd = afd.replace(year=today.year + 1)
-
-time_to_afd = abs(afd-today)
-print time_to_afd.days, "days until next april fools day!"
+    if weekone[calendar.FRIDAY] != 0:
+        meetday = weekone[calendar.FRIDAY]
+    else:
+        meetday = weektwo[calendar.FRIDAY]
